@@ -1,0 +1,13 @@
+apiVersion: helm.hops.ops.com.ai/v1alpha1
+kind: ExternalSecrets
+metadata:
+  name: external-secrets
+  namespace: example-env
+spec:
+  clusterName: example-cluster
+  labels:
+    team: platform
+  namespace: external-secrets
+  values:
+    serviceAccount:
+      create: true

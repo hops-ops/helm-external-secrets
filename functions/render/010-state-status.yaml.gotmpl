@@ -1,0 +1,24 @@
+# code: language=yaml
+#
+# Compute status values from observed state
+#
+
+{{- $es := $state.externalSecrets }}
+{{- $obs := $state.observed }}
+
+# ==============================================================================
+# Compute status output
+# ==============================================================================
+
+# Determine overall ready state from observed Helm release
+{{- $helmReady := $obs.helmRelease.ready | default false }}
+{{- $ready := $helmReady }}
+
+{{- $state = set $state "status" (dict
+  "ready" $ready
+  "release" (dict
+    "name" $es.releaseName
+    "namespace" $es.namespace
+    "ready" $helmReady
+  )
+) }}
