@@ -1,5 +1,0 @@
-apiVersion: v2
-name: helm-external-secrets
-version: 0.0.0
-description: GitOps packaging for the external-secrets Crossplane configuration
-appVersion: 1.3.2
